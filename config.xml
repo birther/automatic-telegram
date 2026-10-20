@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.foodwheel.app" version="1.0.0"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+
+    <name>今天吃什么</name>
+    <description>食物转盘 + 饭钱本：把犹豫交给转盘，把花销记在心里。</description>
+    <author email="hello@example.com" href="https://github.com/">food-wheel</author>
+
+    <content src="index.html" />
+
+    <access origin="*" />
+    <allow-navigation href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+
+    <!-- 基础外观 -->
+    <preference name="Orientation" value="portrait" />
+    <preference name="BackgroundColor" value="0xFFFFF8FB" />
+    <preference name="SplashScreenBackgroundColor" value="0xFFFFF8FB" />
+    <preference name="SplashScreenDelay" value="300" />
+    <preference name="StatusBarBackgroundColor" value="0xFFFFF8FB" />
+    <preference name="StatusBarStyle" value="darkcontent" />
+    <preference name="AndroidWindowSoftInputMode" value="adjustResize" />
+    <preference name="DisallowOverscroll" value="true" />
+
+    <!-- Android -->
+    <preference name="android-minSdkVersion" value="24" />
+    <preference name="android-targetSdkVersion" value="34" />
+
+    <platform name="android">
+        <preference name="AndroidPersistentFileLocation" value="Internal" />
+
+        <icon density="ldpi" src="res/icon/android/ldpi.png" />
+        <icon density="mdpi" src="res/icon/android/mdpi.png" />
+        <icon density="hdpi" src="res/icon/android/hdpi.png" />
+        <icon density="xhdpi" src="res/icon/android/xhdpi.png" />
+        <icon density="xxhdpi" src="res/icon/android/xxhdpi.png" />
+        <icon density="xxxhdpi" src="res/icon/android/xxxhdpi.png" />
+    </platform>
+</widget>

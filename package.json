@@ -1,0 +1,23 @@
+{
+  "name": "food-wheel",
+  "displayName": "今天吃什么",
+  "version": "1.0.0",
+  "private": true,
+  "description": "食物转盘 + 饭钱本：输入想吃的，转一盘决胜负；顺手记下今天/本月/本年的支出与收入。",
+  "license": "MIT",
+  "scripts": {
+    "serve": "npx --yes http-server www -p 5173 -c-1",
+    "platform:android": "cordova platform add android@12",
+    "build:android": "cordova build android --debug",
+    "build:android:release": "cordova build android --release"
+  },
+  "devDependencies": {
+    "cordova": "^12.0.0",
+    "cordova-android": "^12.0.1"
+  },
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  }
+}

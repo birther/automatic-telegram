@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#FFF8FB">
+<meta name="format-detection" content="telephone=no">
+<meta name="mobile-web-app-capable" content="yes">
+<title>今天吃什么 · 转盘与饭钱本</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">🍽️</span>
+      <div>
+        <h1>今天吃什么</h1>
+        <p class="brand-sub">把选择交给转盘，把花销记在心里</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================= 转盘页 ================= -->
+    <section class="page page-wheel is-active" id="pageWheel">
+
+      <!-- 没转动时：放在转盘上方 -->
+      <div class="gif-slot slot-top">
+        <img class="gif" id="gifIdle" src="assets/idle.gif" alt="还没开始转">
+      </div>
+
+      <div class="wheel-stage">
+        <div class="wheel-wrap" id="wheelWrap">
+          <div class="pointer" aria-hidden="true"></div>
+          <canvas id="wheelCanvas" aria-label="食物转盘"></canvas>
+          <button class="spin-btn" id="spinBtn" type="button"><span id="spinLabel">转</span></button>
+        </div>
+        <p class="hint" id="spinHint">点击圆心「转」开始</p>
+      </div>
+
+      <div class="result" id="result">
+        <span class="r-cap">今天就吃</span>
+        <strong class="r-name" id="resultName">还没转呢</strong>
+      </div>
+
+      <!-- 转动时：放在转盘下方 -->
+      <div class="gif-slot slot-bottom" id="slotSpin">
+        <img class="gif" id="gifSpin" src="assets/spin.gif" alt="转动中">
+      </div>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h3>转盘菜单</h3>
+          <span class="panel-count" id="foodCount">0 项</span>
+        </div>
+
+        <form class="add-row" id="addForm" autocomplete="off">
+          <input id="foodInput" type="text" placeholder="想吃点什么？例如：麻辣烫"
+                 maxlength="12" enterkeyhint="done" aria-label="添加食物">
+          <button class="btn-add" type="submit">投入</button>
+        </form>
+
+        <div class="chips" id="chips"></div>
+        <div class="presets" id="presets"></div>
+      </section>
+
+      <p class="tip">小提示：点一下菜单里的食物，就能把它从转盘里拿走；点圆心开始，再点一次就停下来。</p>
+    </section>
+
+    <!-- ================= 记账页 ================= -->
+    <section class="page page-money" id="pageMoney">
+
+      <div class="money-head">
+        <img class="money-mascot" id="moneyMascot" src="assets/money.jpg" alt="记账小助手">
+        <div class="mh-text">
+          <h2 class="mh-title">饭钱本</h2>
+          <p class="mh-sub">这笔账记在<br>今天 / 这个月 / 这一年</p>
+        </div>
+      </div>
+
+      <section class="stat-card">
+        <div class="stat-head"><span>周期</span><span>支出</span><span>收入</span></div>
+
+        <button class="stat-row is-active" type="button" data-period="day">
+          <span>今日</span><b class="out">¥0</b><b class="in">¥0</b>
+        </button>
+        <button class="stat-row" type="button" data-period="month">
+          <span>本月</span><b class="out">¥0</b><b class="in">¥0</b>
+        </button>
+        <button class="stat-row" type="button" data-period="year">
+          <span>本年</span><b class="out">¥0</b><b class="in">¥0</b>
+        </button>
+      </section>
+
+      <form class="panel entry" id="entryForm" autocomplete="off">
+        <div class="type-toggle" id="typeToggle">
+          <button type="button" class="type-btn is-active" data-type="out">支出</button>
+          <button type="button" class="type-btn" data-type="in">收入</button>
+        </div>
+
+        <div class="amount-row">
+          <span class="yuan">¥</span>
+          <input id="amountInput" type="text" inputmode="decimal" placeholder="0.00" aria-label="金额">
+        </div>
+
+        <div class="field-row">
+          <input class="field" id="noteInput" type="text" placeholder="备注（可选）午饭吃了啥" maxlength="20" aria-label="备注">
+          <input class="field" id="dateInput" type="date" aria-label="日期">
+        </div>
+
+        <button class="btn-primary" type="submit">记下这笔</button>
+      </form>
+
+      <div class="rec-head">
+        <h3 id="recTitle">今日明细</h3>
+        <span id="recSummary">共 0 笔</span>
+      </div>
+      <ul class="rec-list" id="recList"></ul>
+      <p class="empty" id="recEmpty">这个时间段还没有记账</p>
+
+    </section>
+
+  </main>
+
+  <nav class="tabbar">
+    <button class="tab is-active" type="button" data-page="wheel">
+      <span class="ic">🎡</span><span>转盘</span>
+    </button>
+    <button class="tab" type="button" data-page="money">
+      <span class="ic">🧾</span><span>记账</span>
+    </button>
+  </nav>
+
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
